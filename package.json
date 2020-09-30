@@ -19,20 +19,26 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "2.1.2"
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "autoprefixer": "^9.7.6",
+    "postcss-cli": "^8.0.0",
+    "prettier": "2.1.2",
+    "tailwindcss": "^1.8.10"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "yarn run build:css && gatsby build",
+    "develop": "yarn run watch:css && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css --env production",
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
   },
   "repository": {
     "type": "git",
